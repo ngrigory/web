@@ -1,19 +1,19 @@
 function convertToByteArray(array1, array2) {
-    // Merge both arrays into a 2D array, then flatten
-    const flattenedArray = [...array1, ...array2];
+    // Merge both DBL arrays into a single array
+    const mergedArray = [...array1, ...array2];
 
-    // Convert to Float32Array (since Python expects float32 format)
-    const float32Array = new Float32Array(flattenedArray);
+    // Convert merged array to Float32Array (as Python expects float32 format)
+    const float32Array = new Float32Array(mergedArray);
 
-    // Convert Float32Array to a Buffer
-    const buffer = Buffer.from(float32Array.buffer);
+    // Create an array of bytes from the Float32Array
+    const byteArray = new Uint8Array(float32Array.buffer);
 
-    // Format the buffer as a Python-compatible bytearray string
-    const pythonByteArray = "b'" + buffer.toString('hex').match(/.{1,2}/g).map(byte => `\\x${byte}`).join('') + "'";
-
-    return ByteArray;
+    // Convert the byte array to a Python-compatible bytearray string
+    const hexString = byteArray.toString('hex');
+    const byteString = hexString.match(/.{1,2}/g).map(byte => `\\x${byte}`).join('');
+    const pythonByteArray =`b'${byteString}'`;
+    return pythonByteArray;
 }
-
 
 function reverseByteArrayToDoubles(byteArrayString) {
     let dblArray = [];
