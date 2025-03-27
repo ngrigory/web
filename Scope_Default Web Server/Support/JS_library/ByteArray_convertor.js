@@ -6,6 +6,7 @@ function convertToByteArray(arr1, arr2) {
 	const rows = arr1.length;
 	// Create a Float32Array with two columns per row.
 	const floatArray = new Float32Array(rows * 2);
+	console.log(`arrays are  ${arr1.slice(0, 10)} and ${arr2.slice(0, 10)}`)
 
 	// Fill the Float32Array with arr1 values in the first column and arr2 values in the second.
 	for (let i = 0; i < rows; i++) {
@@ -28,6 +29,8 @@ function convertToByteArray(arr1, arr2) {
 		}
 	}
 	pythonByteArray += "'";
+	console.log(`result is ${pythonByteArray}`)
+	console.error(`result is ${pythonByteArray}`)
 	return pythonByteArray;
 }
 /**
@@ -40,7 +43,8 @@ function parsePythonBytesLiteral(pyStr) {
 		(pyStr.startsWith('b"') && pyStr.endsWith('"'))) {
 	  pyStr = pyStr.slice(2, -1);
 	} else {
-	  throw new Error("Invalid Python bytes literal format");
+	  console.log(`Invalid first #${pystr.slice(0, 10)}# and invalid last  #${pystr.slice(-10, -1)}#`);
+	  throw new Error(``);
 	}
 	
 	const bytes = [];
