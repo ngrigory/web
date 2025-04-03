@@ -44,7 +44,7 @@ function calculateAmplitude(signal) {
 
     let maxVal = Math.max(...signal);
     let minVal = Math.min(...signal);
-    let amplitude = (maxVal - minVal) / 2; // Peak Amplitude
+    let amplitude = ((maxVal - minVal) / 2) / 2; // Peak Amplitude
 
     return amplitude;
 }
