@@ -1,8 +1,4 @@
 function convertToByteArray(arr1, arr2) {
-	//if (arr1.length !== arr2.length) {
-	//    throw new Error("Both arrays must have the same length.");
-
-	//  }// Merge both DBL arrays into a single array
 	const rows = arr1.length;
 	// Create a Float32Array with two columns per row.
 	const floatArray = new Float32Array(rows * 2);

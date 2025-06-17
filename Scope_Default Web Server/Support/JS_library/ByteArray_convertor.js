@@ -103,7 +103,7 @@ function parsePythonBytesLiteral(pyStr) {
 	
 	// Create a Float32Array view over the same buffer.
 	// (Assumes the environment uses little-endian storage.)
-	const floatArray = new Int32Array(
+	const floatArray = new Float32Array(
 	  byteArray.buffer, 
 	  byteArray.byteOffset, 
 	  byteArray.length / 4
@@ -118,7 +118,7 @@ function parsePythonBytesLiteral(pyStr) {
 	}
 	
 	// Combine the two channels with the separator in between.
-	const returnFloatArray = new Int32Array(channel0.concat([separator]).concat(channel1));
+	const returnFloatArray = new Float32Array(channel0.concat([separator]).concat(channel1));
 	// Convert the combined array into a typed Float32Array.
 	return (returnFloatArray);
   }
